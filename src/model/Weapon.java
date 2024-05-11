@@ -1,6 +1,6 @@
 package model;
 
-public class Weapon {
+public class Weapon implements Iweapon {
 
 	String name;
 	int maxDmg;

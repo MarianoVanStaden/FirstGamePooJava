@@ -1,6 +1,6 @@
 package model;
 
-public class GameCharacter {
+public class GameCharacter implements IgameCharacter {
 String name;
 int maxHp;
 int curHp;
@@ -12,15 +12,19 @@ public GameCharacter (String name, int maxHp, int curHp) {
 	this.curHp = curHp;
 }
 
+@Override
 public String getName() {
 	return name;
 }
+@Override
 public void setName(String name) {
 	this.name = name;
 }
+@Override
 public int getMaxHp() {
 	return maxHp;
 }
+@Override
 public void setMaxHp(int maxHp) {
 	this.maxHp = maxHp;
 }
