@@ -6,7 +6,10 @@ public class Weapon {
 	int maxDmg;
 	int minDmg;
 	
-	public Weapon(String string, int i, int j) {
-		// TODO Auto-generated constructor stub
+	public Weapon(String name, int maxDmg, int minDmg) {
+		this.name = name;
+		this.maxDmg = maxDmg;
+		this.minDmg = minDmg;
 	}
+
 }

@@ -4,7 +4,13 @@ public class GameCharacter {
 String name;
 int maxHp;
 int curHp;
-boolean myWeapon;
+Weapon myWeapon;
+
+public GameCharacter (String name, int maxHp, int curHp) {
+	this.name = name;
+	this.maxHp = maxHp;
+	this.curHp = curHp;
+}
 
 public String getName() {
 	return name;
@@ -17,5 +23,8 @@ public int getMaxHp() {
 }
 public void setMaxHp(int maxHp) {
 	this.maxHp = maxHp;
+}
+void setWeapon(Weapon weapon) {
+    this.myWeapon = weapon;
 }
 }
