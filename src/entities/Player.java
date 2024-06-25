@@ -26,8 +26,11 @@ public class Player  extends GameCharacter implements interfaces.ICombatant{
         this.weapon = weapon;
     }
 
-    public void attack() {
-        System.out.println("Player attacks with " + weapon.getDamage(curHp) + " damage");
+    @Override
+    public int attack() {
+       // System.out.println("Player attacks with " + weapon.getDamage(curHp) + " damage");
+        //return weapon.getDamage(curHp);
+        return 10;
     }
 
     public boolean isInRange(Enemy enemy1) {

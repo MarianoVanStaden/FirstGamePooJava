@@ -19,7 +19,9 @@ public class Enemy extends GameCharacter implements interfaces.ICombatant {
         this.damage = damage;
     }
 
-    public void attack() {
-        System.out.println("Enemy attacks with " + damage + " damage");
+    @Override
+    public int attack() { //TODO: resolver método attack()
+      //  int damage = (minDmg + (maxDmg - minDmg) * Math.random() * crit);
+        return 10;
     }
 }

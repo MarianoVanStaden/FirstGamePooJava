@@ -1,13 +1,13 @@
 package main;
 
+import controllers.GameController;
 import entities.Enemy;
 import entities.GameCharacter;
 import entities.Map;
 import entities.Player;
 import entities.Weapon;
-import interfaces.ICombatant;
 import views.Console;
-import controllers.GameController;
+
 
 
 public class Main {

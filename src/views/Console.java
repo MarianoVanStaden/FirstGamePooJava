@@ -1,6 +1,7 @@
 package views;
-import java.util.Scanner;
+
 import entities.Map;
+import java.util.Scanner;
 
 public class Console {
     private Scanner sc = new Scanner(System.in);
