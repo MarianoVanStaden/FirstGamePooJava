@@ -2,17 +2,14 @@ package entities;
 
 public class Enemy extends GameCharacter implements interfaces.ICombatant {
     private int damage;
+    private int x;
+    private int y;
 
-    public Enemy(int damage) {
-        super(); 
-        this.damage = damage;
-    }
-    public Enemy(int maxHp, int curHp, int damage) {
+    public Enemy(int maxHp, int curHp, int damage, int x, int y) {
         super(maxHp, curHp);
         this.damage = damage;
-    }
-    public int getDamage() {
-        return damage;
+        this.x = x;
+        this.y = y;
     }
 
     public void setDamage(int damage) {
@@ -20,8 +17,22 @@ public class Enemy extends GameCharacter implements interfaces.ICombatant {
     }
 
     @Override
-    public int attack() { //TODO: resolver método attack()
-      //  int damage = (minDmg + (maxDmg - minDmg) * Math.random() * crit);
-        return 10;
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+    
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public int attack() { //Inicializo damage a través del constructor
+        damage = (int)(damage * Math.random());
+        return damage;
     }
 }

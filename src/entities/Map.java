@@ -7,22 +7,60 @@ public class Map {
     }
 
     public void addCharacter(int x, int y, GameCharacter character) {
-        map[x][y] = character;
+        if (isValidPosition(x, y)) {
+            map[x][y] = character;
+        } else {
+            System.out.println("Posición inválida");
+        }
     }
 
     public GameCharacter getCharacter(int x, int y) {
-        return map[x][y];
+        if (isValidPosition(x, y)) {
+            return map[x][y];
+        } else {
+            System.out.println("Posición inválida");
+            return null;
+        }
+    }
+
+    public void removeCharacter(int x, int y) {
+        if (isValidPosition(x, y)) {
+            map[x][y] = null;
+        } else {
+            System.out.println("Posición inválida");
+        }
+    }
+
+    public int getWidth() {
+        return map.length;
     }
 
     public int getHeight() {
         return map[0].length;
     }
 
-    public int getWidth() {
-        return map[0].length;
+    public char[] getTile(int x, int y) {
+        if (isValidPosition(x, y)) {
+            return map[x][y] == null ? new char[] { ' ' } : new char[] { 'X' };
+        } else {
+            return new char[] { '?' }; // '?' para posiciones inválidas
+        }
     }
 
-    public char[] getTile(int i, int j) {
-        return new char[] { ' ' };
+    public void printMap() {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == null) {
+                    System.out.print("[ ]");
+                } else {
+                    System.out.print("[X]");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    private boolean isValidPosition(int x, int y) {
+        return x >= 0 && x < map.length && y >= 0 && y < map[x].length;
     }
 }
