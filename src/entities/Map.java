@@ -46,7 +46,7 @@ public class Map {
             return new char[] { '?' }; // '?' para posiciones inválidas
         }
     }
-
+/*
     public void printMap() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -54,6 +54,23 @@ public class Map {
                     System.out.print("[ ]");
                 } else {
                     System.out.print("[X]");
+                }
+            }
+            System.out.println();
+        }
+    }
+    */
+    public void printMapWithCharacters(Player player, Enemy enemy) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (player.getX() == i && player.getY() == j) {
+                    System.out.print("[H]"); // Posición del jugador
+                } else if (enemy.getX() == i && enemy.getY() == j) {
+                    System.out.print("[X]"); // Posición del enemigo
+                } else if (map[i][j] == null) {
+                    System.out.print("[.]"); // Espacio vacío
+                } else {
+                    System.out.print("[ ]"); // Otros personajes o entidades
                 }
             }
             System.out.println();

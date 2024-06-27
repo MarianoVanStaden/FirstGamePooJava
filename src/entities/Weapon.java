@@ -13,7 +13,7 @@ public class Weapon {
 	}
 
 public int getDamage(float crit) {
-		return (int) (minDmg + (maxDmg - minDmg) * Math.random() * crit);
+		return (int) (minDmg + (maxDmg - minDmg) * Math.random() * 0.1 *crit);
 	}
 
 public String getName() {

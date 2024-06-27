@@ -6,8 +6,8 @@ public class Player extends GameCharacter implements interfaces.ICombatant {
     private int x;
     private int y;
 
-    public Player(String name, Weapon weapon, int x, int y) {
-        super();
+    public Player(int maxHp, int curHp,String name, Weapon weapon, int x, int y) {
+    	super(maxHp, curHp);
         this.name = name;
         this.weapon = weapon;
         this.x = x;
@@ -49,8 +49,7 @@ public class Player extends GameCharacter implements interfaces.ICombatant {
 
     @Override
     public int attack() {
-        System.out.println("Player attacks with " + weapon.getDamage(curHp) + " damage");
-        return weapon.getDamage(curHp);
+        return Math.abs(weapon.getDamage(curHp));
     }
 
     

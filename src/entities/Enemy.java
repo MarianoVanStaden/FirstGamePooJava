@@ -32,7 +32,7 @@ public class Enemy extends GameCharacter implements interfaces.ICombatant {
 
     @Override
     public int attack() { //Inicializo damage a través del constructor
-        damage = (int)(damage * Math.random());
+        damage = Math.abs((int)(damage * Math.random()));
         return damage;
     }
 }

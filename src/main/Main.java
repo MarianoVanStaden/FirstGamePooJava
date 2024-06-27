@@ -2,15 +2,6 @@ package main;
 
 import controllers.GameController;
 import entities.Enemy;
-import entities.GameCharacter;
-import entities.Map;
-import entities.Player;
-import entities.Weapon;
-import views.Console;
-
-import controllers.GameController;
-import entities.Enemy;
-import entities.GameCharacter;
 import entities.Map;
 import entities.Player;
 import entities.Weapon;
@@ -22,11 +13,11 @@ public class Main {
     public static void main(String[] args) {
         // Array de armas predefinidas
         Weapon[] weapons = {
-            new Weapon("Sword", 7, 15),
-            new Weapon("Axe", 5, 10),
-            new Weapon("Bow", 3, 12),
-            new Weapon("Staff", 2, 8),
-            new Weapon("Dagger", 4, 9)
+            new Weapon("Espada", 7, 15),
+            new Weapon("Hacha", 5, 10),
+            new Weapon("Bate", 3, 12),
+            new Weapon("Lanza", 2, 8),
+            new Weapon("Puñal", 4, 9)
         };
 
         // Crear vista
@@ -55,8 +46,8 @@ public class Main {
         Weapon chosenWeapon = weapons[weaponChoice - 1];
 
         // Crear jugador con el nombre y el arma elegida
-        Player player1 = new Player(heroName, chosenWeapon, 0, 0);  // Jugador empieza en (0, 0)
-        Enemy enemy1 = new Enemy(50, 50, 8, 1, 1);                   // Enemigo empieza en (1, 1)
+        Player player1 = new Player(100, 100, heroName, chosenWeapon, 0, 0);  // Jugador empieza en (0, 0)
+        Enemy enemy1 = new Enemy(50, 50, 50, 4, 4);                   // Enemigo empieza en (4, 4)
 
         // Crear mapa
         Map gameMap = new Map(10, 10);
@@ -64,26 +55,25 @@ public class Main {
         gameMap.addCharacter(enemy1.getX(), enemy1.getY(), enemy1);
 
         // Crear controlador del juego
-        GameCharacter[] characters = {player1, enemy1};
-        GameController gameController = new GameController(characters, gameMap, console);
+        GameController gameController = new GameController(player1, enemy1, gameMap, console);
 
         // Iniciar juego
         boolean gameRunning = true;
         while (gameRunning) {
-            console.showMap(gameMap);
+            console.showMapWithCharacters(gameMap, player1, enemy1); // Mostrar el mapa con los personajes
 
             // Movimiento del jugador
             String move = console.askUserMove();
             int newX = player1.getX();
             int newY = player1.getY();
 
-            if (move.equalsIgnoreCase("w")) {
+            if (move.equalsIgnoreCase("a")) {
                 newY--;
-            } else if (move.equalsIgnoreCase("s")) {
-                newY++;
-            } else if (move.equalsIgnoreCase("a")) {
-                newX--;
             } else if (move.equalsIgnoreCase("d")) {
+                newY++;
+            } else if (move.equalsIgnoreCase("w")) {
+                newX--;
+            } else if (move.equalsIgnoreCase("s")) {
                 newX++;
             }
 
@@ -93,16 +83,17 @@ public class Main {
 
                 // Simular combate
                 if (player1.isInRange(enemy1)) {
+                    System.out.println("¡Entra en combate (está en rango)!");
                     gameController.combat(player1, enemy1);
                 }
 
                 // Comprobar estado del juego
                 if (player1.getCurHp() <= 0) {
                     gameRunning = false;
-                    console.showStatus("Juego Terminado - El jugador ha sido derrotado.");
+                    console.showStatus("Juego Terminado - Has perdido!.");
                 } else if (enemy1.getCurHp() <= 0) {
-                    gameRunning = false;
-                    console.showStatus("Juego Terminado - El enemigo ha sido derrotado.");
+                    gameRunning = false; 
+                    console.showStatus("Juego Terminado - Has ganado!.");
                 }
             } else {
                 console.showStatus("Movimiento no válido. Las coordenadas están fuera de los límites del mapa.");
